@@ -23,8 +23,16 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
+    <script>
+      window.server_url = "http://localhost:3000";
+      //window.server_url = "https://finessebudget.herokuapp.com";
+      //window.server_url = "http://192.168.0.108:3000";
+    </script>
+
+
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic/js/angular/angular-resource.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -32,6 +40,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
   </head>
 
   <body ng-app="starter">
