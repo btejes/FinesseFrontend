@@ -3,19 +3,15 @@
     <div class="list">
       <label class="item item-input item-floating-label">
         <span class="input-label">Email</span>
-        <input type="email" placeholder="Email" ng-model="email">
+        <input type="email" placeholder="Email" ng-model="full_name">
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Password</span>
         <input type="password" placeholder="Password" ng-model="password">
       </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Repeat Password</span>
-        <input type="password" placeholder="Repeat password" ng-model="repeat_password">
-      </label>
     </div>
     <div class="padding">
-      <button class="button button-block button-calm" ng-click="signup(email, password, repeat_password)">Signup</button>
+      <button class="button button-block button-calm" ng-click="signup(full_name, password)">Signup</button>
     </div>
   </ion-content>
 </ion-view>

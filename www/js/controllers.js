@@ -8,12 +8,12 @@ angular.module('starter.controllers', [])
 .controller('SignupCtrl', function($scope,SignupSession,$ionicPopup) {
 
 
-  $scope.signup = function(email, password, repeat_password) {
-    var user_session = new SignupSession({ user: { email: email, password: password }});
+  $scope.signup = function(full_name, password) {
+    var user_session = new SignupSession({ user: { full_name: full_name, password: password }});
     user_session.$save(
       function(data){
-        //window.localStorage['email'] = email;
-        //window.localStorage['password'] = password;
+        window.localStorage['full_name'] = full_name;
+        window.localStorage['password'] = password;
         $location.path('/app/playlists');
       },
       function(err){
