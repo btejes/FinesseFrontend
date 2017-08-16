@@ -9,12 +9,23 @@ angular.module('starter.controllers', [])
 
 
   $scope.signup = function(full_name, password) {
-    var user_session = new SignupSession({ user: { full_name: full_name, password: password }});
+
+    var params = {
+      data: {
+        type: 'users',
+        attributes: {
+          full_name: full_name,
+          password: password
+          }
+      }
+    };
+
+    var user_session = new SignupSession(params);  //SignupSession({ user: { full_name: full_name, password: password }});  User.create(full_name: "Sasa J", password: "Test")
     user_session.$save(
       function(data){
-        window.localStorage['full_name'] = full_name;
-        window.localStorage['password'] = password;
-        $location.path('/app/playlists');
+        //window.localStorage['full_name'] = full_name;
+        //window.localStorage['password'] = password;
+        //$location.path('/app/playlists');
       },
       function(err){
         $ionicPopup.alert({
@@ -29,15 +40,26 @@ angular.module('starter.controllers', [])
 .controller('LoginCtrl', function($scope, $location,UserSession,$ionicPopup,$state) {
   $scope.loadingMessage = null;
 
-  $scope.login = function(email, password) {
+  $scope.login = function(full_name, password) {
     $scope.loadingMessage = "Logging in";
-    var user_session = new UserSession({ user: { email: email, password: password, token: window.localStorage['token'] || "" }});
+
+    //var params = {
+    //  data: {
+    //    type: 'users',
+    //    attributes: {
+    //      full_name: full_name,
+    //      password: password
+    //    }
+    //  }
+    //};
+
+    var user_session = new UserSession({full_name: full_name, password: password}); //{ user: { email: email, password: password, token: window.localStorage['token'] || "" }}
     user_session.$save(
       function(data){
         $scope.loadingMessage = null;
         //window.localStorage['email'] = email;
         //window.localStorage['password'] = password;
-        $state.go('dashboard');
+        $state.go('/app/playlists');
       },
       function(err){
         $scope.loadingMessage = null;
